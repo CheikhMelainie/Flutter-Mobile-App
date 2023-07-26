@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "226739650933",
+    "project_id": "asroo-shop-getx-6dd46",
+    "storage_bucket": "asroo-shop-getx-6dd46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226739650933:android:b2bdc76b86ead89284533c",
+        "android_client_info": {
+          "package_name": "com.example.frist_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "226739650933-t2168aeoso5ijelo92pfn714d484hrof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPtxMa-zeYzy3xdOEda7l-9mm58EFjjRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "226739650933-t2168aeoso5ijelo92pfn714d484hrof.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

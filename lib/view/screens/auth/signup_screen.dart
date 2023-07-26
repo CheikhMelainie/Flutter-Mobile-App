@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frist_app/logic/controlors/auth_controller.dart';
+import 'package:frist_app/routes/route.dart';
+import 'package:frist_app/utils/my_string.dart';
 import 'package:frist_app/utils/theme.dart';
 import 'package:frist_app/view/widgets/text_utils.dart';
 import 'package:get/get.dart';
@@ -11,9 +14,13 @@ import '../../widgets/auth/container_under.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
 
+  final fromKey = GlobalKey<FormState>();
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  final controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,99 +39,141 @@ class SignUpScreen extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 1.3,
                 child: Padding(
                   padding: EdgeInsets.only(left: 25, right: 25, top: 40),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          TextUtils(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w500,
-                            text: "SIGN",
-                            color: Get.isDarkMode ? mainColor : pinkClr,
-                            underline: TextDecoration.none,
-                          ),
-                          const SizedBox(
-                            width: 3,
-                          ),
-                          TextUtils(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w500,
-                            text: "UP",
-                            color: Get.isDarkMode ? Colors.black : Colors.white,
-                            underline: TextDecoration.none,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      AuthTextFromFiled(
-                        controller: nameController,
-                        obscureText: false,
-                        validator: () {},
-                        prefixIcon: Get.isDarkMode
-                            ? Image.asset('assests/images/user.png')
-                            : Icon(
-                                Icons.person,
-                                color: pinkClr,
-                                size: 30,
-                              ),
-                        suffixIcon: const Text(""),
-                        hintText: 'User Name',
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      AuthTextFromFiled(
-                        controller: emailController,
-                        obscureText: false,
-                        validator: () {},
-                        prefixIcon: Get.isDarkMode
-                            ? Image.asset('assests/images/email.png')
-                            : Icon(
-                                Icons.email,
-                                color: pinkClr,
-                                size: 30,
-                              ),
-                        suffixIcon: const Text(""),
-                        hintText: 'Email',
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      AuthTextFromFiled(
-                        controller: passwordController,
-                        obscureText: true,
-                        validator: () {},
-                        prefixIcon: Get.isDarkMode
-                            ? Image.asset('assests/images/lock.png')
-                            : Icon(
-                                Icons.lock,
-                                color: pinkClr,
-                                size: 30,
-                              ),
-                        suffixIcon: const Text(""),
-                        hintText: 'Password',
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      const CheckWidget(),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      AuthButton(
-                        onPressed: () {},
-                        text: 'SIGN UP',
-                      ),
-                    ],
+                  child: Form(
+                    key: fromKey,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            TextUtils(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w500,
+                              text: "SIGN",
+                              color: Get.isDarkMode ? mainColor : pinkClr,
+                              underline: TextDecoration.none,
+                            ),
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            TextUtils(
+                              fontSize: 28,
+                              fontWeight: FontWeight.w500,
+                              text: "UP",
+                              color:
+                                  Get.isDarkMode ? Colors.black : Colors.white,
+                              underline: TextDecoration.none,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        AuthTextFromFiled(
+                          controller: nameController,
+                          obscureText: false,
+                          validator: (value) {
+                            if (value.toString().length <= 2 ||
+                                !RegExp(validationName).hasMatch(value)) {
+                              return "Entre valid name";
+                            } else {
+                              return null;
+                            }
+                          },
+                          prefixIcon: Get.isDarkMode
+                              ? Image.asset('assests/images/user.png')
+                              : Icon(
+                                  Icons.person,
+                                  color: pinkClr,
+                                  size: 30,
+                                ),
+                          suffixIcon: const Text(""),
+                          hintText: 'User Name',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        AuthTextFromFiled(
+                          controller: emailController,
+                          obscureText: false,
+                          validator: (value) {
+                            if (!RegExp(validationEmail).hasMatch(value)) {
+                              return "Invaid email";
+                            } else {
+                              return null;
+                            }
+                          },
+                          prefixIcon: Get.isDarkMode
+                              ? Image.asset('assests/images/email.png')
+                              : Icon(
+                                  Icons.email,
+                                  color: pinkClr,
+                                  size: 30,
+                                ),
+                          suffixIcon: const Text(""),
+                          hintText: 'Email',
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        GetBuilder<AuthController>(
+                          builder: (_) {
+                            return AuthTextFromFiled(
+                              controller: passwordController,
+                              obscureText:
+                                  controller.isVisibility ? false : true,
+                              validator: (value) {
+                                if (value.toString().length < 6) {
+                                  return 'Password should be longer or equal to 6 caracters';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              prefixIcon: Get.isDarkMode
+                                  ? Image.asset('assests/images/lock.png')
+                                  : Icon(
+                                      Icons.lock,
+                                      color: pinkClr,
+                                      size: 30,
+                                    ),
+                              hintText: 'Password',
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    controller.visibility();
+                                  },
+                                  icon: controller.isVisibility
+                                      ? const Icon(
+                                          Icons.visibility_off,
+                                          color: Colors.black,
+                                        )
+                                      : const Icon(
+                                          Icons.visibility,
+                                          color: Colors.black,
+                                        )),
+                            );
+                          },
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        CheckWidget(),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        AuthButton(
+                          onPressed: () {},
+                          text: 'SIGN UP',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
               ContainerUnder(
                 text: 'Already have an Account? ',
                 textType: 'log in',
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamed(Routes.loginScreen);
+                },
               ),
             ],
           ),
