@@ -1,4 +1,4 @@
-package com.example.frist_app
+package com.asrooshop.app
 
 import io.flutter.embedding.android.FlutterActivity
 

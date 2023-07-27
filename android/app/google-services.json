@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "226739650933",
-    "project_id": "asroo-shop-getx-6dd46",
-    "storage_bucket": "asroo-shop-getx-6dd46.appspot.com"
+    "project_number": "56641527225",
+    "project_id": "asroo-shop-2e2d1",
+    "storage_bucket": "asroo-shop-2e2d1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:226739650933:android:b2bdc76b86ead89284533c",
+        "mobilesdk_app_id": "1:56641527225:android:5090d79c4f6c5b20292a68",
         "android_client_info": {
-          "package_name": "com.example.frist_app"
+          "package_name": "com.asrooshop.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "226739650933-t2168aeoso5ijelo92pfn714d484hrof.apps.googleusercontent.com",
+          "client_id": "56641527225-5t5hjt5slb2ja588qkjt9edc1u20ms26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.asrooshop.app",
+            "certificate_hash": "3e53a7f269dfbc3f779b4c2336f528b99a9b2391"
+          }
+        },
+        {
+          "client_id": "56641527225-8vh3vktfvtp1is3m3hbrf053f10vo69k.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDPtxMa-zeYzy3xdOEda7l-9mm58EFjjRY"
+          "current_key": "AIzaSyBOYrY7HUlezA_gLbXtjI0X23ektIl1XQ4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "226739650933-t2168aeoso5ijelo92pfn714d484hrof.apps.googleusercontent.com",
+              "client_id": "56641527225-8vh3vktfvtp1is3m3hbrf053f10vo69k.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

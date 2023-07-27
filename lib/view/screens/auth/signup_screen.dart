@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:frist_app/logic/controlors/auth_controller.dart';
 import 'package:frist_app/routes/route.dart';
@@ -159,9 +160,33 @@ class SignUpScreen extends StatelessWidget {
                         const SizedBox(
                           height: 50,
                         ),
-                        AuthButton(
-                          onPressed: () {},
-                          text: 'SIGN UP',
+                        GetBuilder<AuthController>(
+                          builder: (_) {
+                            return AuthButton(
+                              onPressed: () {
+                                if (controller.isCheckBox == false) {
+                                  Get.snackbar(
+                                    "Check Box",
+                                    "Please, Accept terms & conditions",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    backgroundColor: Colors.green,
+                                    colorText: Colors.white,
+                                  );
+                                } else if (fromKey.currentState!.validate()) {
+                                  String name = nameController.text.trim();
+                                  String email = emailController.text.trim();
+                                  String password = passwordController.text;
+                                  controller.signUpUsingFirebase(
+                                    name: name,
+                                    email: email,
+                                    password: password,
+                                  );
+                                  controller.isCheckBox == true;
+                                }
+                              },
+                              text: 'SIGN UP',
+                            );
+                          },
                         ),
                       ],
                     ),

@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.frist_app"
+        applicationId "com.asrooshop.app"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -65,7 +65,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+    implementation platform('com.google.firebase:firebase-bom:32.2.0')
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -154,9 +154,21 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(
                           height: 50,
                         ),
-                        AuthButton(
-                          onPressed: () {},
-                          text: 'LOG IN',
+                        GetBuilder<AuthController>(
+                          builder: (_) {
+                            return AuthButton(
+                              onPressed: () {
+                                if (fromKey.currentState!.validate()) {
+                                  String email = emailController.text.trim();
+                                  String password = passwordController.text;
+
+                                  controller.logInUsingFirebase(
+                                      email: email, password: password);
+                                }
+                              },
+                              text: 'LOG IN',
+                            );
+                          },
                         ),
                         const SizedBox(
                           height: 20,
