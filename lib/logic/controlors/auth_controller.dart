@@ -2,11 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:frist_app/routes/route.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
   bool isVisibility = false;
   bool isCheckBox = false;
   var displayUserName = '';
+  var displayUserPhoto = '';
+  var googeSignIn = GoogleSignIn();
   FirebaseAuth auth = FirebaseAuth.instance;
 
   void visibility() {
@@ -107,11 +110,60 @@ class AuthController extends GetxController {
     }
   }
 
-  void googleSinUpFirebase() {}
+  void googleSinUpApp() async {
+    try {
+      final GoogleSignInAccount? googleUser = await googeSignIn.signIn();
+      displayUserName = googleUser!.displayName!;
+      displayUserPhoto = googleUser.photoUrl!;
+
+      update();
+
+      Get.offNamed(Routes.mainScreen);
+    } catch (error) {
+      Get.snackbar(
+        'Error!',
+        error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+    }
+  }
 
   void faceBookSignUpApp() {}
 
-  void restPassword() {}
+  void restPassword(String email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+
+      update();
+      Get.back();
+    } on FirebaseAuthException catch (error) {
+      String title = error.code.replaceAll(RegExp('-'), ' ').capitalize!;
+      String message = '';
+      if (error.code == 'user-not-found') {
+        message =
+            'Account  does not exists for that $email .. Create your account by signing up..';
+      } else {
+        message = error.message.toString();
+      }
+      Get.snackbar(
+        title,
+        message,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+    } catch (error) {
+      Get.snackbar(
+        'Error!',
+        error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+    }
+  }
 
   void signOutFromApp() {}
 }

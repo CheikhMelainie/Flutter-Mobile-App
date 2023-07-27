@@ -195,12 +195,16 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(
                               width: 10,
                             ),
-                            InkWell(
-                              onTap: () {},
-                              child: Image.asset(
-                                'assests/images/google.png',
-                              ),
-                            ),
+                            GetBuilder<AuthController>(builder: (_) {
+                              return InkWell(
+                                onTap: () {
+                                  controller.googleSinUpApp();
+                                },
+                                child: Image.asset(
+                                  'assests/images/google.png',
+                                ),
+                              );
+                            }),
                           ],
                         ),
                       ],
