@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 import 'package:frist_app/view/screens/Welcome_screen.dart';
 
 import '../logic/bindigns/auth_binidings.dart';
+import '../logic/bindigns/main_bindings.dart';
 
 class AppRoutes {
   //initialRoute
   static const welcome = Routes.welcomeScreen;
+  static const mainScreen = Routes.mainScreen;
 
   //getPages
 
@@ -28,9 +30,13 @@ class AppRoutes {
         page: () => ForgotPasswordScreen(),
         binding: AuthBiniding()),
     GetPage(
-        name: Routes.mainScreen,
-        page: () => MainScreen(),
-        binding: AuthBiniding()),
+      name: Routes.mainScreen,
+      page: () => MainScreen(),
+      bindings: [
+        AuthBiniding(),
+        MainBiniding(),
+      ],
+    ),
   ];
 }
 

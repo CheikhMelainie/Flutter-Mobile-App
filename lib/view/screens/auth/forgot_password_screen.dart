@@ -19,8 +19,9 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
           centerTitle: true,
           elevation: 0,
           title: Text(
@@ -35,11 +36,10 @@ class ForgotPasswordScreen extends StatelessWidget {
             },
             icon: Icon(
               Icons.arrow_back,
-              color: Get.isDarkMode ? Colors.black : Colors.white,
+              color: Get.isDarkMode ? Colors.white : Colors.black,
             ),
           ),
         ),
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
         body: Form(
           key: formkey,
           child: SingleChildScrollView(
@@ -66,7 +66,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                     'If you want to recover your account, then please provids your Email ID below..',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Get.isDarkMode ? Colors.black : Colors.white,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
                   const SizedBox(

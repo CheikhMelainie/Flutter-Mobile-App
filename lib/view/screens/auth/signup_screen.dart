@@ -28,10 +28,10 @@ class SignUpScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
           elevation: 0,
         ),
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+        backgroundColor: context.theme.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -61,7 +61,7 @@ class SignUpScreen extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               text: "UP",
                               color:
-                                  Get.isDarkMode ? Colors.black : Colors.white,
+                                  Get.isDarkMode ? Colors.white : Colors.black,
                               underline: TextDecoration.none,
                             ),
                           ],

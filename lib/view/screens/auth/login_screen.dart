@@ -26,11 +26,11 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: context.theme.backgroundColor,
         appBar: AppBar(
           backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
           elevation: 0,
         ),
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -49,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                               fontSize: 28,
                               fontWeight: FontWeight.w500,
                               text: "LOG",
-                              color: Get.isDarkMode ? mainColor : pinkClr,
+                              color: Get.isDarkMode ? pinkClr : mainColor,
                               underline: TextDecoration.none,
                             ),
                             const SizedBox(
@@ -60,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               text: "IN",
                               color:
-                                  Get.isDarkMode ? Colors.black : Colors.white,
+                                  Get.isDarkMode ? Colors.white : Colors.black,
                               underline: TextDecoration.none,
                             ),
                           ],
@@ -141,7 +141,7 @@ class LoginScreen extends StatelessWidget {
                               text: 'Forgot Password?',
                               fontSize: 14,
                               color:
-                                  Get.isDarkMode ? Colors.black : Colors.white,
+                                  Get.isDarkMode ? Colors.white : Colors.black,
                               underline: TextDecoration.none,
                               fontWeight: FontWeight.normal,
                             ),
@@ -177,7 +177,7 @@ class LoginScreen extends StatelessWidget {
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                           text: "OR",
-                          color: Get.isDarkMode ? Colors.black : Colors.white,
+                          color: Get.isDarkMode ? Colors.white : Colors.black,
                           underline: TextDecoration.none,
                         ),
                         const SizedBox(
