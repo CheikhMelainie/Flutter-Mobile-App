@@ -1,3 +1,4 @@
+import 'package:frist_app/logic/bindigns/product_bindigns.dart';
 import 'package:frist_app/view/screens/auth/forgot_password_screen.dart';
 import 'package:frist_app/view/screens/auth/login_screen.dart';
 import 'package:frist_app/view/screens/auth/signup_screen.dart';
@@ -35,6 +36,7 @@ class AppRoutes {
       bindings: [
         AuthBiniding(),
         MainBiniding(),
+        ProductBinding(),
       ],
     ),
   ];
