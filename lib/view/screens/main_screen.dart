@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frist_app/logic/controlors/auth_controller.dart';
 import 'package:frist_app/logic/controlors/main_controller.dart';
+import 'package:frist_app/routes/route.dart';
 import 'package:frist_app/utils/theme.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,9 @@ class MainScreen extends StatelessWidget {
             leading: Container(),
             actions: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamed(Routes.cartScreen);
+                },
                 icon: Image.asset('assests/images/shop.png'),
               ),
             ],
